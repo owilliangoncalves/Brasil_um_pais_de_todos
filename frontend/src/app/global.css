@@ -44,6 +44,15 @@
     --sidebar-accent-foreground: #334155;
     --sidebar-border: #e2e8f0;
     --sidebar-ring: #64748b;
+
+    --status-executado: #059669; /* emerald-600 */
+    --status-executado-bg: rgba(16, 185, 129, 0.15);
+
+    --status-liquidado: #1d4ed8; /* blue-700 */
+    --status-liquidado-bg: rgba(59, 130, 246, 0.15);
+
+    --status-empenhado: #b45309; /* amber-700 */
+    --status-empenhado-bg: rgba(245, 158, 11, 0.15);
 }
 
 .dark {
@@ -83,9 +92,25 @@
     --sidebar-accent-foreground: #f8fafc;
     --sidebar-border: #1e293b;
     --sidebar-ring: #475569;
+    --status-executado: #34d399; /* emerald-400 */
+    --status-executado-bg: rgba(52, 211, 153, 0.1);
+
+    --status-liquidado: #60a5fa; /* blue-400 */
+    --status-liquidado-bg: rgba(96, 165, 250, 0.1);
+
+    --status-empenhado: #fbbf24; /* amber-400 */
+    --status-empenhado-bg: rgba(251, 191, 36, 0.1);
 }
 
 @theme inline {
+    /* Mapeamento dos Status */
+    --color-status-executado: var(--status-executado);
+    --color-status-executado-bg: var(--status-executado-bg);
+    --color-status-liquidado: var(--status-liquidado);
+    --color-status-liquidado-bg: var(--status-liquidado-bg);
+
+    --color-status-empenhado: var(--status-empenhado);
+    --color-status-empenhado-bg: var(--status-empenhado-bg);
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);
