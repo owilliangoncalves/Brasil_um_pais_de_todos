@@ -16,7 +16,7 @@ import {
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
 import { Glossario } from './Glossario';
-import { cn } from '../../lib/utils';
+import { cn } from '../utils/utils';
 
 interface NavItem {
   name: string;
