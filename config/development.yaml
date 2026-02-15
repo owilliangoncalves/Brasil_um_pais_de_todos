@@ -32,7 +32,7 @@ server:
       precompressed: false
       folder:
         uri: "/"
-        path: "frontend/dist"
+        path: "frontend/.next"
       fallback: "frontend/dist/index.html"
 
 # Worker Configuration

@@ -803,7 +803,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "deOlho"
+name = "deolho"
 version = "0.1.0"
 dependencies = [
  "async-trait",
