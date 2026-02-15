@@ -79,18 +79,6 @@ export function RevenuePieChart({ data }: RevenuePieChartProps): React.JSX.Eleme
                                     />
                                 ))}
                             </Pie>
-                            {/* Tooltip customizado para seguir o design system do portal */}
-                            <Tooltip
-                                contentStyle={{
-                                    backgroundColor: 'hsl(var(--card))',
-                                    borderColor: 'hsl(var(--border))',
-                                    borderRadius: 'var(--radius)',
-                                    color: 'hsl(var(--foreground))',
-                                    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'
-                                }}
-                                itemStyle={{ color: 'hsl(var(--foreground))', fontSize: '12px' }}
-                                formatter={(value: number) => [formatarValorGrande(value), 'Valor']}
-                            />
                             {/* Legenda inferior com formatação de texto muted */}
                             <Legend
                                 verticalAlign="bottom"
