@@ -50,6 +50,8 @@ export interface FiltrosTransacao {
   status?: string;
 }
 
+
+
 export const filtrarTransacoes = async (filtros: FiltrosTransacao): Promise<TransacaoPublica[]> => {
   await simulateNetworkDelay();
   
