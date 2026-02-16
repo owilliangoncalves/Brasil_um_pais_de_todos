@@ -9,9 +9,9 @@
     radial-gradient(at bottom left, var(--secondary), transparent);
     --brazil-gradient: linear-gradient(135deg, #15803d 0%, #f59e0b 50%, #2563eb 100%);
     --font-size: 16px;
-    --background: #fafafa;
-    --foreground: #0f172a;
-    --card: #fafafa;
+    --background-light: #fafafa;
+    --foreground-dark: #0f172a;
+    --card-light: #fafafa;
     --card-foreground: #0f172a;
     --popover: #fafafa;
     --popover-foreground: #0f172a;
@@ -62,7 +62,7 @@
 .dark {
     --background: #1c1c1e;
     --foreground: #fafafa;
-    --card: #0f172a;
+    --card: #2c2c2e;
     --card-foreground: #fafafa;
     --popover: #0f172a;
     --popover-foreground: #fafafa;
@@ -74,7 +74,7 @@
     --secondary-foreground: #1c1c1e;
     --muted: #1e293b;
     --muted-foreground: #94a3b8;
-    --accent: #3b82f6;
+    --accent: #4169e1;
     --accent-foreground: #1c1c1e;
     --destructive: #ef4444;
     --destructive-foreground: #fafafa;
@@ -157,9 +157,9 @@
 }
 
 @layer base {
-    * {
-        @apply border-border outline-ring/50;
-    }
+    /** {*/
+    /*    @apply border-border outline-ring/50;*/
+    /*}*/
 
     body {
         @apply bg-background text-foreground;
