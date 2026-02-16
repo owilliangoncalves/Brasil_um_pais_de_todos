@@ -47,7 +47,7 @@ export function Header(): React.JSX.Element {
     const pathname = usePathname();
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
+        <header className="sticky top-0 z-50 w-full  bg-background/80 backdrop-blur-md">
             <a
                 href="/"
                 className="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:p-4 focus:bg-primary focus:text-white focus:rounded-br-lg"
