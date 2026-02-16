@@ -2,10 +2,10 @@
 
 import React, { useState, useMemo, useId } from 'react';
 import { Info, Search, BookOpen, Hash } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
+import { Button } from '@/components/lucide/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/lucide/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from '@/components/lucide/dialog';
+import { Input } from '@/components/lucide/input';
 import { glossario, TermoGlossario } from '@/data/glossario';
 
 /**

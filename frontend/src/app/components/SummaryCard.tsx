@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { LucideIcon } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/lucide/card';
 import { TooltipAjuda } from './TooltipAjuda';
 import { cn } from '@/utils/utils';
 

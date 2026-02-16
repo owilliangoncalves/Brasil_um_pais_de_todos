@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
-} from '@/components/ui/tooltip';
+} from '@/components/lucide/tooltip';
 import { glossario } from '@/data/glossario';
 
 /**

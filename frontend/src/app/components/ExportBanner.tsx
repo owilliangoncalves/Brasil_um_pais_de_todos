@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Download, Loader2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/lucide/button';
 import { formatarValorGrande } from '@/data/mockData';
 
 /**
