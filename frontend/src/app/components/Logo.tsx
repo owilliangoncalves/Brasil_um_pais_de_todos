@@ -88,10 +88,10 @@ export function Logo({ className = "w-10 h-10", showText = false }: LogoProps) {
             {showText && (
                 <div className="flex flex-col justify-center">
                     <h1 className="font-black text-foreground leading-none tracking-tighter uppercase text-xl">
-                        Cidadão <span className="text-primary italic font-black">de Olho</span>
+                        Cidadão <span className="bg-brazil-gradient bg-clip-text text-transparent">de Olho</span>
                     </h1>
-                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] mt-1">
-                        Portal de Transparência
+                    <p className="text-[10px] font-bold text-foreground uppercase tracking-[0.2em] mt-1">
+                        Portal de Transparência para o cidadão
                     </p>
                 </div>
             )}
