@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { RevenuePieChart } from '@/components/lucide/graficos/pie';
+import { RevenuePieChart } from '@/components/graficos/pie';
 import { InteractiveMapCard } from '@/components/MapaSVG';
 
 interface DashboardChartsProps {
