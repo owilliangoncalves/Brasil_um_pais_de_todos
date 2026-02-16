@@ -104,7 +104,7 @@ export function EstadosPage(): React.JSX.Element {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-12">
 
           {/* 1. HERO SECTION */}
-          <HeroStats totalNacional={totalNacional} />
+          {/*<HeroStats totalNacional={totalNacional} />*/}
 
           {/* 2. FILTROS DE REGIÃO */}
           <RegionFilter

@@ -9,12 +9,13 @@ import {
   obterFontesReceita,
   obterAreasDespesa,
   obterTransacoes,
+} from '@/services/transparenciaService';
+import{
   type ResumoOrcamentario,
   type FonteReceita,
   type AreaDespesa,
   type TransacaoPublica
-} from '@/services/transparenciaService';
-
+} from '@/data/mockData';
 interface DashboardData {
   resumoOrcamentario: ResumoOrcamentario[];
   fontesReceita: FonteReceita[];
