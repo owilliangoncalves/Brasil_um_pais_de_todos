@@ -48,13 +48,6 @@ export function Header(): React.JSX.Element {
 
     return (
         <header className="sticky top-0 z-50 w-full  bg-background/80 backdrop-blur-md">
-            <a
-                href="/"
-                className="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:p-4 focus:bg-primary focus:text-white focus:rounded-br-lg"
-            >
-                Pular para o conteúdo principal
-            </a>
-
             <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
                 <Link
                     href="/"
