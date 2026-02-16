@@ -1,61 +1,109 @@
 'use client';
 
 import React from 'react';
-import {ShieldCheck, ZoomIn } from 'lucide-react';
+import Link from 'next/link';
+import { cn } from '@/utils/utils';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/lucide/button';
+
+type HeroAction = {
+    label: string;
+    href: string;
+    variant?: 'primary' | 'secondary';
+};
+
+interface HeroProps {
+    /** Elemento de identidade visual (Logo ou Badge) */
+    logo?: React.ReactNode;
+
+    /** Headline principal (H1 obrigatório) */
+    titulo: React.ReactNode;
+
+    /** Texto de apoio opcional */
+    descricao?: React.ReactNode;
+
+    /** Ações principais do Hero */
+    acoes?: readonly HeroAction[];
+
+    /** Conteúdo auxiliar (ex: provas, selos, confiança) */
+    auxiliar?: React.ReactNode;
+
+    /** Ajustes finos de layout */
+    tamanho?: 'default' | 'compact';
+}
 
 /**
- * Componente HeroSection.
- * * Representa a seção de impacto inicial da página principal (Landing Page).
- * Este componente utiliza tipografia expressiva e gradientes para reforçar o propósito
- * da plataforma "Cidadão de Olho", focando em clareza visual e acessibilidade.
- * * @component
- * @returns {JSX.Element} Uma seção de destaque com título, descrição e badges de confiança.
+ * Hero unificada do sistema.
+ *
+ * Atua como componente estrutural de alto nível.
+ * Não contém lógica de domínio.
  */
-export function HeroSection(): React.JSX.Element {
+export function Hero({
+                         logo,
+                         titulo,
+                         descricao,
+                         acoes,
+                         auxiliar,
+                         tamanho = 'default',
+                     }: HeroProps): React.JSX.Element {
     return (
         <section
             aria-labelledby="hero-title"
-            className="relative pt-20 pb-20 border-b border-border/40 overflow-hidden"
+            className={cn(
+                '',
+                tamanho === 'default' ? 'pt-24 pb-24' : 'pt-16 pb-16'
+            )}
         >
-
-            <div className="max-w-4xl mx-auto text-center space-y-10">
-
-                {/* Badge flutuante com animação de entrada (zoom-in/fade-in).
-                  Identifica a marca do projeto e atrai o foco visual inicial.
-                */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-primary shadow-xl mx-auto animate-in fade-in zoom-in duration-500">
-                    <ZoomIn className="w-4 h-4" />
-                    <span className="text-[11px] font-black uppercase tracking-[0.2em]">Cidadão de Olho</span>
-                </div>
+            <div className="max-w-5xl mx-auto text-center space-y-10 px-4">
+                {logo && (
+                    <div className="flex justify-center animate-in fade-in zoom-in duration-700">
+                        {logo}
+                    </div>
+                )}
 
                 <div className="space-y-6">
-                    {/* Título Principal: Utiliza tracking-tighter para um visual moderno e
-                      um gradiente linear aplicado via mask (bg-clip-text) no termo em destaque.
-                    */}
                     <h1
                         id="hero-title"
-                        className="text-6xl md:text-8xl font-black tracking-tighter text-foreground leading-[0.9]"
+                        className="text-5xl md:text-8xl"
                     >
-                        O dinheiro público sob sua <br />
-                        <span className="bg-linear-to-r from-primary via-green-500 to-emerald-400 bg-clip-text text-transparent italic">
-                            fiscalização.
-                        </span>
+                        {titulo}
                     </h1>
 
-                    <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium opacity-90">
-                        Buscamos e disponibilizamos dado público para que a população se informe de como os governantes tem tratado nosso dinheiro
-                    </p>
+                    {descricao && (
+                        <p className="text-muted-foreground text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-medium">
+                            {descricao}
+                        </p>
+                    )}
                 </div>
 
-
-                {/* Badges de Confiança: Área dedicada a reforçar a credibilidade dos dados.
-                  Utiliza ícones da Lucide para reforço semântico visual.
-                */}
-                <div className="flex flex-wrap justify-center gap-10 pt-8 text-[11px] font-black text-muted-foreground/50 uppercase tracking-[0.2em]">
-                    <div className="flex items-center gap-2.5">
-                        <ShieldCheck className="w-5 h-5 text-primary/60" /> Fontes Oficiais
+                {acoes && acoes.length > 0 && (
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                        {acoes.map((action) => (
+                            <Button
+                                key={action.href}
+                                size="lg"
+                                asChild
+                                className={cn(
+                                    'rounded-full h-14 px-10 text-xl gap-2 group',
+                                    action.variant === 'primary' && 'bg-accent text-white ',
+                                    action.variant === 'secondary' && 'bg-secondary text-secondary-foreground '
+                                )}
+                            >
+                                <Link href={action.href}>
+                                    {action.label}
+                                    {action.variant !== 'secondary' && (
+                                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                                    )}
+                                </Link>
+                            </Button>
+                        ))}
                     </div>
-                </div>
+                )}
+
+
+                {auxiliar && (
+                    <div className="pt-10">{auxiliar}</div>
+                )}
             </div>
         </section>
     );
