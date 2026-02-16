@@ -1,92 +1,86 @@
 'use client';
 
-import * as React from 'react';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
-import { Button } from '@/components/lucide/button';
+import { Logo } from './Logo';
+import { ThemeToggle } from './ThemeToggle';
+import { Glossario } from './Glossario';
+
 import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
+    DesktopMenu,
+    MobileMenu,
+    NAV_ITEMS,
+} from '@/components/menu';
+import React from 'react';
 
-} from '@/components/lucide/sheet';
-
-import { Logo } from '../Logo';
-import { ThemeToggle } from '../ThemeToggle';
-import { Glossario } from '../Glossario';
-import { cn } from '@/utils/utils';
-
-import { useHeaderLogic } from '../menu/logic';
-
+/**
+ * Cabeçalho principal da aplicação.
+ *
+ * @remarks
+ * Este componente atua como um **Layout Orchestrator**.
+ * Ele é responsável por compor e posicionar elementos
+ * estruturais do topo da aplicação, sem conter lógica
+ * de domínio ou regras de negócio.
+ *
+ * O `Header` coordena:
+ * - Identidade visual (Logo)
+ * - Navegação principal (Desktop e Mobile)
+ * - Utilidades globais (Tema, Glossário)
+ *
+ *  Este componente **não decide o que aparece no menu**.
+ * Todas as regras de navegação são delegadas ao domínio
+ * do módulo `Menu`.
+ *
+ * @public
+ */
 export function Header(): React.JSX.Element {
-  const {
-    navItems,
-    isOpen,
-    setIsOpen,
-    isActive,
-    closeMenu,
-  } = useHeaderLogic();
+    /**
+     * Caminho atual da aplicação.
+     *
+     * @remarks
+     * Obtido a partir do App Router do Next.js.
+     * É repassado aos componentes de Menu para:
+     * - Determinar item ativo
+     * - Sincronizar estado visual da navegação
+     */
+    const pathname = usePathname();
 
-  return (
-      <header className="sticky top-0 z-50 w-full  bg-background/80 backdrop-blur-md">
-        <a
-            href="/"
-            className="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:p-4 focus:bg-primary focus:text-white focus:rounded-br-lg"
-        >
-          Pular para o conteúdo principal
-        </a>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center">
-            <Link
+    return (
+        <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
+            <a
                 href="/"
-                className="hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                aria-label="Ir para a página inicial do Portal Cidadão de Olho"
+                className="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:p-4 focus:bg-primary focus:text-white focus:rounded-br-lg"
             >
-              <Logo showText={true} />
-            </Link>
-          </div>
+                Pular para o conteúdo principal
+            </a>
 
-          {/* Navegação Desktop */}
-
-
-          {/* Navegação Mobile */}
-          <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
-
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-10 w-10"
-                    aria-label={
-                      isOpen
-                          ? 'Fechar menu de navegação'
-                          : 'Abrir menu de navegação'
-                    }
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+                <Link
+                    href="/"
+                    aria-label="Ir para a página inicial"
+                    className="hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
-                  <Menu className="h-6 w-6" aria-hidden="true" />
-                </Button>
-              </SheetTrigger>
+                    <Logo showText />
+                </Link>
 
-              <SheetContent
-                  side="right"
-                  className="w-[85vw] sm:w-80 bg-background border-l"
-              >
-                {/* TODO o conteúdo mobile precisa estar aqui dentro */}
-                <nav>
-                  <ul className="flex flex-col gap-2 list-none p-0">
-                    {item.name}
-                  </ul>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </div>
+                <DesktopMenu
+                    navItems={NAV_ITEMS}
+                    currentPath={pathname}
+                />
 
+                <div className="flex items-center gap-2">
+                    <div className="hidden md:flex items-center gap-2">
+                        <Glossario />
+                        <ThemeToggle />
+                    </div>
 
-        </div>
-      </header>
-  );
+                    <MobileMenu
+                        navItems={NAV_ITEMS}
+                        currentPath={pathname}
+                    />
+                </div>
+            </div>
+        </header>
+    );
 }
