@@ -1,61 +1,106 @@
 'use client';
-
+import { HeroProps } from '@/components/hero/props';
 import React from 'react';
-import {ShieldCheck, ZoomIn } from 'lucide-react';
+import Link from 'next/link';
+import { cn } from '@/utils/utils';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/lucide/button';
 
-/**
- * Componente HeroSection.
- * * Representa a seção de impacto inicial da página principal (Landing Page).
- * Este componente utiliza tipografia expressiva e gradientes para reforçar o propósito
- * da plataforma "Cidadão de Olho", focando em clareza visual e acessibilidade.
- * * @component
- * @returns {JSX.Element} Uma seção de destaque com título, descrição e badges de confiança.
- */
-export function HeroSection(): React.JSX.Element {
+export function Hero({
+                         logo,
+                         titulo,
+                         descricao,
+                         acoes,
+                         auxiliar,
+                         tamanho = 'default',
+                         imagem,
+                         creditoImagem,
+                     }: HeroProps & { creditoImagem?: string }): React.JSX.Element {
     return (
         <section
             aria-labelledby="hero-title"
-            className="relative pt-20 pb-20 border-b border-border/40 overflow-hidden"
+            className={cn(
+                'relative overflow-hidden rounded-2xl',
+                tamanho === 'default' ? 'pt-24 pb-24' : 'pt-16 pb-16'
+            )}
         >
-
-            <div className="max-w-4xl mx-auto text-center space-y-10">
-
-                {/* Badge flutuante com animação de entrada (zoom-in/fade-in).
-                  Identifica a marca do projeto e atrai o foco visual inicial.
-                */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-primary shadow-xl mx-auto animate-in fade-in zoom-in duration-500">
-                    <ZoomIn className="w-4 h-4" />
-                    <span className="text-[11px] font-black uppercase tracking-[0.2em]">Cidadão de Olho</span>
+            {/* --- Imagem Desktop --- */}
+            {imagem && (
+                <div className="hidden md:block absolute inset-0 -z-10 w-full h-full">
+                    {typeof imagem === 'string' ? (
+                        <img
+                            src={imagem}
+                            alt=""
+                            className="w-full h-full object-cover object-center rounded-2xl"
+                        />
+                    ) : (
+                        <div className="w-full h-full rounded-2xl overflow-hidden relative">
+                            {imagem}
+                            {creditoImagem && (
+                                <div className="absolute bottom-2 right-2 text-xs text-foreground italic px-2 py-1 bg-black/30 rounded">
+                                    {creditoImagem}
+                                </div>
+                            )}
+                        </div>
+                    )}
+                    {/* Overlay escuro para contraste */}
+                    <div className="absolute inset-0 bg-black/30 rounded-2xl" />
                 </div>
+            )}
+
+            {/* --- Conteúdo principal --- */}
+            <div className="max-w-5xl mx-auto text-center space-y-10 px-4 relative z-10">
+                {logo && (
+                    <div className="flex justify-center animate-in fade-in zoom-in duration-700">
+                        {logo}
+                    </div>
+                )}
 
                 <div className="space-y-6">
-                    {/* Título Principal: Utiliza tracking-tighter para um visual moderno e
-                      um gradiente linear aplicado via mask (bg-clip-text) no termo em destaque.
-                    */}
-                    <h1
-                        id="hero-title"
-                        className="text-6xl md:text-8xl font-black tracking-tighter text-foreground leading-[0.9]"
-                    >
-                        O dinheiro público sob sua <br />
-                        <span className="bg-linear-to-r from-primary via-green-500 to-emerald-400 bg-clip-text text-transparent italic">
-                            fiscalização.
-                        </span>
+                    {/* --- Título principal --- */}
+                    <h1 id="hero-title" className="text-4xl md:text-8xl font-black">
+                        {/* Mobile simplificado */}
+                        <span className="block md:hidden bg-brazil-gradient bg-clip-text text-transparent">
+              Visão Geral
+            </span>
+                        {/* Desktop completo */}
+                        <span className="hidden md:block">{titulo}</span>
                     </h1>
 
-                    <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium opacity-90">
-                        Buscamos e disponibilizamos dado público para que a população se informe de como os governantes tem tratado nosso dinheiro
-                    </p>
+                    {descricao && (
+                        <p className="hidden md:block text-muted-foreground text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-medium">
+                            {descricao}
+                        </p>
+                    )}
                 </div>
 
-
-                {/* Badges de Confiança: Área dedicada a reforçar a credibilidade dos dados.
-                  Utiliza ícones da Lucide para reforço semântico visual.
-                */}
-                <div className="flex flex-wrap justify-center gap-10 pt-8 text-[11px] font-black text-muted-foreground/50 uppercase tracking-[0.2em]">
-                    <div className="flex items-center gap-2.5">
-                        <ShieldCheck className="w-5 h-5 text-primary/60" /> Fontes Oficiais
+                {/* --- Ações / Botões --- */}
+                {acoes && acoes.length > 0 && (
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                        {acoes.map((action) => (
+                            <Button
+                                key={action.href}
+                                size="lg"
+                                asChild
+                                className={cn(
+                                    'rounded-full h-14 px-10 text-xl gap-2 group',
+                                    action.variant === 'primary' && 'bg-accent text-white',
+                                    action.variant === 'secondary' && 'bg-secondary text-secondary-foreground'
+                                )}
+                            >
+                                <Link href={action.href}>
+                                    {action.label}
+                                    {action.variant !== 'secondary' && (
+                                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                                    )}
+                                </Link>
+                            </Button>
+                        ))}
                     </div>
-                </div>
+                )}
+
+                {/* --- Conteúdo auxiliar --- */}
+                {auxiliar && <div className="pt-10 hidden md:block">{auxiliar}</div>}
             </div>
         </section>
     );
