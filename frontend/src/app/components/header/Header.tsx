@@ -16,7 +16,7 @@ import {
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
 import { Glossario } from './Glossario';
-import { cn } from '../utils/utils';
+import { cn } from '@/utils/utils';
 
 interface NavItem {
   name: string;
@@ -34,7 +34,7 @@ const navItems: NavItem[] = [
 ];
 
 /**
- * Componente de cabeçalho principal (Header).
+ * Componente de cabeçalho principal (header).
  * * Fornece a navegação global, alternância de tema e acesso ao glossário.
  * Implementa design responsivo com menu "hamburger" (Sheet) para dispositivos móveis
  * e uma barra de navegação horizontal para desktops.
