@@ -67,7 +67,7 @@ export default function ExplorarPage(): React.JSX.Element {
             </ol>
           </nav>
 
-          {/* Landmark: Header Interno
+          {/* Landmark: header Interno
               Apresenta o propósito da página com tipografia de alto impacto.
           */}
           <header className="space-y-4">
