@@ -13,7 +13,7 @@ import {
   type FonteReceita,
   type AreaDespesa,
   type TransacaoPublica
-} from '../services/transparenciaService';
+} from '@/services/transparenciaService';
 
 interface DashboardData {
   resumoOrcamentario: ResumoOrcamentario[];

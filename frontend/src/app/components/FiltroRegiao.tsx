@@ -1,5 +1,5 @@
 import { MapPin, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/lucide/button';
 import { formatarValorGrande } from '@/data/mockData';
 import React from "react";
 

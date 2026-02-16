@@ -33,7 +33,7 @@ export const obterTransacoes = async (): Promise<TransacaoPublica[]> => {
 /**
  * Service: Obter transação por ID
  */
-export const obterTransacaoPorId = async (id: string): Promise<TransacaoPublica | null> => {
+export const obterTransacaoPorId = async (id: string | Array<string>): Promise<TransacaoPublica | null> => {
   await simulateNetworkDelay();
   // Em produção: return await fetch(`/api/transacoes/${id}`).then(res => res.json());
   const transacao = transacoes.find(t => t.id === id);

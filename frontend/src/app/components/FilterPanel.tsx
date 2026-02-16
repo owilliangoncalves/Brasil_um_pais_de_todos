@@ -2,10 +2,10 @@
 
 import React, { useId } from 'react'; // useId garante IDs únicos e estáveis
 import { Filter, Search, X } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/lucide/card';
+import { Input } from '@/components/lucide/input';
+import { Button } from '@/components/lucide/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/lucide/select';
 import { categorias, orgaos, statusOptions } from '@/data/mockData';
 
 /**

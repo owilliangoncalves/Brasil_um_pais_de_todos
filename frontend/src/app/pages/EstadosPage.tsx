@@ -3,8 +3,8 @@
 import React, { useState, useMemo, useEffect, useDeferredValue } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, X } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Input } from '@/components/lucide/input';
+import { Button } from '@/components/lucide/button';
 import {Estado, estados, obterTotaisPorRegiao} from '@/data/estados';
 
 import { EstadoCard } from '@/components/EstadoCard';

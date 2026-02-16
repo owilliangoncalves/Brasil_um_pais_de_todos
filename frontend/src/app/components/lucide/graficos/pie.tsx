@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/lucide/card';
 import { formatarValorGrande } from '@/data/mockData';
 
 /**

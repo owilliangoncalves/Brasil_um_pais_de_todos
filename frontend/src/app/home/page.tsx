@@ -1,7 +1,16 @@
-'use client';
-
+import { Metadata } from 'next';
 import DashboardPage from "@/pages/Home";
 
-export default function Home() {
-    return <DashboardPage/>;
+// export const metadata: Metadata = {
+//     title: 'Início | Cidadão de Olho',
+//     description: 'Página inicial do portal.',
+// };
+
+export default function HomePage() {
+
+    return (
+
+
+            <DashboardPage />
+    );
 }

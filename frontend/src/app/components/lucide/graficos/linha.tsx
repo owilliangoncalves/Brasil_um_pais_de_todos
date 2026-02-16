@@ -5,8 +5,8 @@ import {
     LineChart, Line, XAxis, YAxis, CartesianGrid,
     Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/lucide/card';
+import { Button } from '@/components/lucide/button';
 import { Download } from 'lucide-react';
 import { formatarValorGrande } from '@/data/mockData';
 import { exportarParaCSV } from '@/utils/export';

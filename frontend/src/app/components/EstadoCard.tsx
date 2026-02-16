@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/lucide/card';
 import { Users, DollarSign, TrendingUp } from 'lucide-react';
 import { coresRegioes, type Estado } from '@/data/estados';
 import { formatarValorGrande } from '@/data/mockData';

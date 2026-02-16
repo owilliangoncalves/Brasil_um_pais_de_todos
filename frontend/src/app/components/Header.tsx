@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/lucide/button';
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetTitle,
   SheetDescription
-} from '@/components/ui/sheet';
+} from '@/components/lucide/sheet';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
 import { Glossario } from './Glossario';

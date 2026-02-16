@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/lucide/card';
 import { MapaBrasil } from '@/components/MapaBrasil';
 import { regioes, coresRegioes } from '@/data/estados';
 
